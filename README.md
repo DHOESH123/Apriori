@@ -96,7 +96,7 @@ import pandas as pd
 from itertools import combinations
 ```
 
-# Step 1: Load Dataset
+### Step 1: Load Dataset
 ```Python
 df = pd.read_csv('market.csv')
 transactions = df['Items'].apply(lambda x: x.split(','))
@@ -105,22 +105,22 @@ print("Sample Transactions:")
 for i, t in enumerate(transactions[:5], 1):
     print(f"Transaction {i}: {t}")
 ```
-# Step 2: Define Minimum Support and Confidence
+### Step 2: Define Minimum Support and Confidence
 ```Python
 min_support = 0.3   # 30%
 min_confidence = 0.6
 ```
-# Step 3: Generate All Possible Items
+### Step 3: Generate All Possible Items
 ```Python
 all_items = sorted({item for trans in transactions for item in trans})
 ```
-# Step 4: Function to Calculate Support
+### Step 4: Function to Calculate Support
 ```Python
 def calculate_support(itemset):
     count = sum(1 for trans in transactions if itemset.issubset(set(trans)))
     return count / len(transactions)
 ```
-# Step 5: Generate Frequent Itemsets
+### Step 5: Generate Frequent Itemsets
 ```Python
 def apriori(transactions, min_support):
     freq_itemsets = []
@@ -149,12 +149,12 @@ def apriori(transactions, min_support):
     return freq_itemsets
 ```
 
-# Step 6: Run Apriori
+### Step 6: Run Apriori
 ```Python
 print("\nFrequent Itemsets (Support ≥ 0.3):")
 frequent_itemsets = apriori(transactions, min_support)
 ```
-# Step 7: Generate Association Rules
+### Step 7: Generate Association Rules
 ```Python
 print("\n Association Rules (Confidence ≥ 0.6):")
 rules = []
@@ -176,7 +176,7 @@ for itemset, support in frequent_itemsets:
                               f"Confidence: {round(confidence,2)} | "
                               f"Lift: {round(lift,2)}")
 ```
-# Step 8: Identify the Strongest Rule
+### Step 8: Identify the Strongest Rule
 ```Python
 if rules:
     strongest_rule = max(rules, key=lambda x: x[4])  # highest lift
