@@ -1,5 +1,7 @@
 # Apriori
 
+## NAME: ESHWAR T
+## REGISTER NUMBER:212223230054
 ## AIM
 
 To implement the Apriori Algorithm in Python using the dataset for identifying frequent itemsets and generating strong association rules based on minimum support and confidence thresholds.
